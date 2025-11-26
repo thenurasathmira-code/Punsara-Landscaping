@@ -97,41 +97,53 @@
             color: #0f8a3f;
         }
     </style>
+    <!-- Added animations, hero section, WhatsApp button, mobile-friendly layout -->
 </head>
 <body>
-    <header>Punsara Landscaping</header>
+    <!-- HERO SECTION -->
+    <section style="background:url('images/hero.jpg') center/cover no-repeat; height:70vh; display:flex; align-items:center; justify-content:center; text-align:center; color:white; padding:20px;">
+        <div style="backdrop-filter:blur(6px); background:rgba(0,0,0,0.4); padding:20px 40px; border-radius:20px;">
+            <h1 style="font-size:50px; margin:0; font-weight:bold; animation:fadeIn 1.5s;">Punsara Landscaping</h1>
+            <p style="font-size:22px; margin-top:10px; animation:fadeIn 2.5s;">We Create Beautiful Nature Spaces</p>
+        </div>
+    </section>
 
+    <style>
+        @keyframes fadeIn {
+            from { opacity:0; transform:translateY(20px);} 
+            to { opacity:1; transform:translateY(0);} 
+        }
+    </style>
+
+    <!-- WORK SHOWCASE -->
     <div class="gallery-container">
-        <h2 style="text-align:center; color:#0f8a3f;">Our Work Showcase</h2>
+        <h2 style="text-align:center; color:#0f8a3f; font-size:32px;">Our Work Showcase</h2>
+        <p style="text-align:center; margin-bottom:20px;">Add your 30 images inside the <b>images</b> folder and rename them as: photo1.jpg to photo30.jpg</p>
 
-        <!-- Layer 1 -->
         <div class="layer" id="layer1">
-            <!-- Add your top 15 photo paths here -->
             <script>
                 for (let i = 1; i <= 15; i++) {
-                    document.write(`<img src="WhatsApp Image 2025-11-24 at 19.23.03_9eb81f85${i}.jpg" onclick="openSlider(${i-1})">`);
+                    document.write(`<img src=\"images/photo${i}.jpg\" onclick=\"openSlider(${i-1})\">`);
                 }
             </script>
         </div>
 
-        <!-- Layer 2 -->
         <div class="layer" id="layer2">
-            <!-- Add your bottom 15 photo paths here -->
             <script>
                 for (let i = 16; i <= 30; i++) {
-                    document.write(`<img src="images/photo${i}.jpg" onclick="openSlider(${i-1})">`);
+                    document.write(`<img src=\"images/photo${i}.jpg\" onclick=\"openSlider(${i-1})\">`);
                 }
             </script>
         </div>
     </div>
 
-    <!-- Contact Section -->
+    <!-- CONTACT SECTION -->
     <div class="contact">
         <p><span>📞 Contact Us:</span><br> 077-1234567 | 071-7654321</p>
         <p><span>📍 Address:</span><br> Punsara Landscaping Service, Sri Lanka</p>
     </div>
 
-    <!-- Fullscreen Slider -->
+    <!-- FULLSCREEN SLIDER -->
     <div id="slider">
         <span id="close" onclick="closeSlider()">&times;</span>
         <span id="prev" class="arrow" onclick="changeSlide(-1)">&#10094;</span>
@@ -139,9 +151,14 @@
         <span id="next" class="arrow" onclick="changeSlide(1)">&#10095;</span>
     </div>
 
+    <!-- WHATSAPP Floating Button -->
+    <a href="https://wa.me/94771234567" style="position:fixed; bottom:20px; right:20px; background:#25D366; color:white; padding:15px 20px; border-radius:50px; text-decoration:none; font-size:20px; box-shadow:0 4px 10px rgba(0,0,0,0.3);">WhatsApp</a>
+
     <footer>
         © 2025 Punsara Landscaping | All Rights Reserved
     </footer>
+
+</body>
 
     <script>
         let currentIndex = 0;
