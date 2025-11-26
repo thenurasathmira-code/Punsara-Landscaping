@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Punsara Landscaping</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(45deg,#0f8a3f,#69c96a);
+            padding: 25px;
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .gallery-container {
+            width: 95%;
+            margin: auto;
+            margin-top: 40px;
+        }
+        .layer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+        .layer img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .layer img:hover {
+            transform: scale(1.05);
+        }
+        /* Fullscreen Slider */
+        #slider {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #slider img {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 10px;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            padding: 10px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+        #prev { left: 20px; }
+        #next { right: 20px; }
+        #close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background: #0f8a3f;
+            color: white;
+            font-size: 18px;
+        }
+        .contact {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            font-size: 20px;
+        }
+        .contact span {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0f8a3f;
+        }
+    </style>
+</head>
+<body>
+    <header>Punsara Landscaping</header>
+
+    <div class="gallery-container">
+        <h2 style="text-align:center; color:#0f8a3f;">Our Work Showcase</h2>
+
+        <!-- Layer 1 -->
+        <div class="layer" id="layer1">
+            <!-- Add your top 15 photo paths here -->
+            <script>
+                for (let i = 1; i <= 15; i++) {
+                    document.write(`<img src="images/photo${i}.jpg" onclick="openSlider(${i-1})">`);
+                }
+            </script>
+        </div>
+
+        <!-- Layer 2 -->
+        <div class="layer" id="layer2">
+            <!-- Add your bottom 15 photo paths here -->
+            <script>
+                for (let i = 16; i <= 30; i++) {
+                    document.write(`<img src="images/photo${i}.jpg" onclick="openSlider(${i-1})">`);
+                }
+            </script>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact">
+        <p><span>📞 Contact Us:</span><br> 077-1234567 | 071-7654321</p>
+        <p><span>📍 Address:</span><br> Punsara Landscaping Service, Sri Lanka</p>
+    </div>
+
+    <!-- Fullscreen Slider -->
+    <div id="slider">
+        <span id="close" onclick="closeSlider()">&times;</span>
+        <span id="prev" class="arrow" onclick="changeSlide(-1)">&#10094;</span>
+        <img id="sliderImg" src="" />
+        <span id="next" class="arrow" onclick="changeSlide(1)">&#10095;</span>
+    </div>
+
+    <footer>
+        © 2025 Punsara Landscaping | All Rights Reserved
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        let images = [];
+
+        for (let i = 1; i <= 30; i++) {
+            images.push(`images/photo${i}.jpg`);
+        }
+
+        function openSlider(index) {
+            currentIndex = index;
+            document.getElementById("sliderImg").src = images[currentIndex];
+            document.getElementById("slider").style.display = "flex";
+        }
+
+        function closeSlider() {
+            document.getElementById("slider").style.display = "none";
+        }
+
+        function changeSlide(step) {
+            currentIndex += step;
+            if (currentIndex < 0) currentIndex = images.length - 1;
+            if (currentIndex >= images.length) currentIndex = 0;
+            document.getElementById("sliderImg").src = images[currentIndex];
+        }
+    </script>
+</body>
+</html>
